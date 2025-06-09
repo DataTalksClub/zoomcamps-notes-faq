@@ -1,0 +1,28 @@
+$color-scheme: datatalks;
+
+// DataTalks.Club brand colors
+$datatalks-blue: #2563eb;
+$datatalks-orange: #f97316;
+$datatalks-dark-blue: #1e40af;
+$datatalks-light-blue: #dbeafe;
+
+// Base colors
+$body-background-color: $white !default;
+$body-heading-color: $grey-dk-300 !default;
+$body-text-color: $grey-dk-100 !default;
+$link-color: $datatalks-blue !default;
+$nav-child-link-color: $grey-dk-100 !default;
+$sidebar-color: $grey-lt-000 !default;
+$base-button-color: #f7f7f7 !default;
+$btn-primary-color: $datatalks-blue !default;
+$code-background-color: $grey-lt-000 !default;
+$feedback-color: darken($sidebar-color, 3%) !default;
+$table-background-color: $white !default;
+$search-background-color: $white !default;
+$search-result-preview-color: $grey-dk-000 !default;
+
+// Custom accent colors
+$accent-color: $datatalks-orange !default;
+$highlight-color: $datatalks-light-blue !default;
+
+@import "./vendor/OneLightJekyll/syntax"; 
