@@ -63,13 +63,6 @@ We welcome contributions from the community! You can help by:
 3. Make your improvements
 4. Submit a pull request with a clear description
 
-## Community Links
-
-- **Main Website**: [datatalks.club](https://datatalks.club/)
-- **Slack Community**: [Join 73,000+ members](https://datatalks.club/slack.html)
-- **YouTube Channel**: [DataTalks.Club](https://www.youtube.com/@DataTalksClub)
-- **Course Repositories**: [GitHub Organization](https://github.com/DataTalksClub)
-
 ## Contact
 
 - **Alexey Grigorev**: [alexey@datatalks.club](mailto:alexey@datatalks.club): Founder & Community Lead
