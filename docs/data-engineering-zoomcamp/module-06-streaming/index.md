@@ -1,7 +1,7 @@
 ---
 title: Module 6
 parent: Data Engineering Zoomcamp
-nav_order: 1
+nav_order: 6
 ---
 
 # Course Documentation
