@@ -36,17 +36,19 @@ So while importing these files as parquet to BigQuery, the first one will be use
 
 So, in order to prevent errors like that, make sure to enforce the data types for the columns on the DataFrame before you serialize/upload them to BigQuery. Like this:
 
-pd.read\_csv("path\_or\_url").astype({  
-	"col1\_name": "datatype",	  
-	"col2\_name": "datatype",	  
+```
+pd.read_csv("path_or_url").astype({  
+	"col1_name": "datatype",	  
+	"col2_name": "datatype",	  
 	...					  
-	"colN\_name": "datatype" 	  
+	"colN_name": "datatype" 	  
 })
+```
 
 ## GCS Bucket \- Fix Error when importing FHV data to GCS
 
 If you receive the error gzip.BadGzipFile: Not a gzipped file (b'\\n\\n'), this is because you have specified the wrong URL to the FHV dataset. Make sure to use [https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhv/{dataset\_file}.csv.gz](https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhv/{dataset_file}.csv.gz)  
-Emphasising the ‘/releases/download’ part of the URL.
+Emphasising the 'releases/download' part of the URL.
 
 ## GCS Bucket \- Load Data From URL list in to GCP Bucket
 
@@ -64,9 +66,9 @@ Krishna Anand
 
 - [See this Slack conversation for helpful tips](https://datatalks-club.slack.com/archives/C01FABYF2RG/p1676034803779649)
 
-## GCP BQ \- “bq: command not found” 
+## GCP BQ \- "bq: command not found" 
 
-Run the following command to check if “BigQuery Command Line Tool” is installed or not: `gcloud components list`
+Run the following command to check if "BigQuery Command Line Tool" is installed or not: `gcloud components list`
 
 You can also use `bq.cmd` instead of `bq` to make it work.
 
@@ -78,9 +80,9 @@ I created by bigquery dataset on an account where my free trial was exhausted, a
 
 Use big query in free credits and destroy all the datasets after creation.
 
-Check your Billing daily\! Especially if you’ve spinned up a VM.
+Check your Billing daily\! Especially if you've spinned up a VM.
 
-## GCP BQ \- Cannot read and write in different locations: source: EU, destination: US \- Loading data from GCS into BigQuery (different Region):
+## GCP BQ \- Cannot read and write in different locations: source: EU, destination: US - Loading data from GCS into BigQuery (different Region):
 
 Be careful when you create your resources on GCP, all of them have to share the same Region in order to allow load data from GCS Bucket to BigQuery. If you forgot it when you created them, you can create a new dataset on BigQuery using the same Region which you used on your GCS Bucket.
 
@@ -90,7 +92,7 @@ Be careful when you create your resources on GCP, all of them have to share the 
 
 This means that your GCS Bucket and the BigQuery dataset are placed in different regions. You have to create a new dataset inside BigQuery in the same region with your GCS bucket and store the data in the newly created dataset.
 
-## GCP BQ \- Cannot read and write in different locations: source: \<REGION\_HERE\>, destination: \<ANOTHER\_REGION\_HERE\>
+## GCP BQ \- Cannot read and write in different locations: source: <REGION_HERE>, destination: <ANOTHER_REGION_HERE>
 
 Make sure to create the BigQuery dataset in the very same location that you've created the GCS Bucket. For instance, **if your GCS Bucket was created in \`**us-central1**\`, then BigQuery dataset** **must be created in the same region** (us-central1, in this example)
 
@@ -100,7 +102,7 @@ Make sure to create the BigQuery dataset in the very same location that you've c
 
 ## GCP BQ \- Remember to save your queries
 
-By the way, this isn’t a problem/solution, but a useful hint:
+By the way, this isn't a problem/solution, but a useful hint:
 
 * Please, remember to save your progress in BigQuery SQL Editor.
 
@@ -118,7 +120,7 @@ Ans :  While real-time analytics might not be explicitly mentioned, BigQuery has
 
 ## GCP BQ \- Unable to load data from external tables into a materialized table in BigQuery due to an invalid timestamp error that are added while appending data to the file in Google Cloud Storage
 
-could not parse 'pickup\_datetime' as timestamp for field pickup\_datetime (position 2\)
+could not parse 'pickup_datetime' as timestamp for field pickup_datetime (position 2\)
 
 This error is caused by invalid data in the timestamp column. A way to identify the problem is to define the schema from the external table using string datatype. This enables the queries to work at which point we can filter out the invalid rows from the import to the materialised table and insert the fields with the timestamp data type.
 
@@ -126,25 +128,25 @@ This error is caused by invalid data in the timestamp column. A way to identify 
 
 **Background**:
 
-- \`pd.read\_parquet\`  
-- \`pd.to\_datetime\`  
-- \`pq.write\_to\_dataset\`
+- \`pd.read_parquet\`  
+- \`pd.to_datetime\`  
+- \`pq.write_to_dataset\`
 
 **Reference**: 
 
 - [https://stackoverflow.com/questions/48314880/are-parquet-file-created-with-pyarrow-vs-pyspark-compatible](https://stackoverflow.com/questions/48314880/are-parquet-file-created-with-pyarrow-vs-pyspark-compatible)  
 - [https://stackoverflow.com/questions/57798479/editing-parquet-files-with-python-causes-errors-to-datetime-format](https://stackoverflow.com/questions/57798479/editing-parquet-files-with-python-causes-errors-to-datetime-format)  
-- [https://www.reddit.com/r/bigquery/comments/16aoq0u/parquet\_timestamp\_to\_bq\_coming\_across\_as\_int/?share\_id=YXqCs5Jl6hQcw-kg6-VgF\&utm\_content=1\&utm\_medium=ios\_app\&utm\_name=ioscss\&utm\_source=share\&utm\_term=1](https://www.reddit.com/r/bigquery/comments/16aoq0u/parquet_timestamp_to_bq_coming_across_as_int/?share_id=YXqCs5Jl6hQcw-kg6-VgF&utm_content=1&utm_medium=ios_app&utm_name=ioscss&utm_source=share&utm_term=1)
+- [https://www.reddit.com/r/bigquery/comments/16aoq0u/parquet_timestamp_to_bq_coming_across_as_int/?share_id=YXqCs5Jl6hQcw-kg6-VgF\&utm_content=1\&utm_medium=ios_app\&utm_name=ioscss\&utm_source=share\&utm_term=1](https://www.reddit.com/r/bigquery/comments/16aoq0u/parquet_timestamp_to_bq_coming_across_as_int/?share_id=YXqCs5Jl6hQcw-kg6-VgF&utm_content=1&utm_medium=ios_app&utm_name=ioscss&utm_source=share&utm_term=1)
 
 **Solution**:
 
-Add \`use\_deprecated\_int96\_timestamps=True\` to \`pq.write\_to\_dataset\` function, like below
+Add \`use_deprecated_int96_timestamps=True\` to \`pq.write_to_dataset\` function, like below
 
-pq.write\_to\_dataset(  
+pq.write_to_dataset(  
         table,  
-        root\_path=root\_path,  
+        root_path=root_path,  
         filesystem=gcs,  
-        use\_deprecated\_int96\_timestamps=True    
+        use_deprecated_int96_timestamps=True    
 \# Write timestamps to INT96 Parquet format  
 )
 
@@ -152,28 +154,28 @@ pq.write\_to\_dataset(
 
 **Solution:**
 
-If you’re using Mage, in the last Data Exporter that writes to Google Cloud Storage use PyArrow to generate the Parquet file with the correct logical type for the datetime columns, otherwise they won't be converted to timestamp when loaded by BigQuery later on.
+If you're using Mage, in the last Data Exporter that writes to Google Cloud Storage use PyArrow to generate the Parquet file with the correct logical type for the datetime columns, otherwise they won't be converted to timestamp when loaded by BigQuery later on.
 
 import pyarrow as pa  
 import pyarrow.parquet as pq  
 import os
 
-if 'data\_exporter' not in globals():  
-    from mage\_ai.data\_preparation.decorators import data\_exporter
+if 'data_exporter' not in globals():  
+    from mage_ai.data_preparation.decorators import data_exporter
 
 \# Replace with the location of your service account key JSON file.  
-os.environ\['GOOGLE\_APPLICATION\_CREDENTIALS'\] \= '/home/src/personal-gcp.json' 
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] \= '/home/src/personal-gcp.json' 
 
-bucket\_name \= "\<YOUR\_BUCKET\_NAME\>"  
-object\_key \= 'nyc\_taxi\_data\_2022.parquet'  
-where \= f'{bucket\_name}/{object\_key}'
+bucket_name \= "<YOUR_BUCKET_NAME>"  
+object_key \= 'nyc_taxi_data_2022.parquet'  
+where \= f'{bucket_name}/{object_key}'
 
-@data\_exporter  
-def export\_data(data, \*args, \*\*kwargs):  
-    table \= pa.Table.from\_pandas(data, preserve\_index=False)  
+@data_exporter  
+def export_data(data, *args, **kwargs):  
+    table \= pa.Table.from_pandas(data, preserve_index=False)  
     gcs \= pa.fs.GcsFileSystem()
 
-    pq.write\_table(  
+    pq.write_table(  
         table,  
         where,
 
@@ -181,39 +183,39 @@ def export\_data(data, \*args, \*\*kwargs):
         \# to Timestamp columns in microseconds ('us') so  
         \# they can be loaded into BigQuery with the right  
         \# data type  
-        coerce\_timestamps='us',
+        coerce_timestamps='us',
 
         filesystem=gcs  
     )
 
 **Solution 2:**
 
-If you’re using Mage, in the last Data Exporter that writes to Google Cloud Storage, provide PyArrow with explicit schema to generate the Parquet file with the correct logical type for the datetime columns, otherwise they won't be converted to timestamp when loaded by BigQuery later on.
+If you're using Mage, in the last Data Exporter that writes to Google Cloud Storage, provide PyArrow with explicit schema to generate the Parquet file with the correct logical type for the datetime columns, otherwise they won't be converted to timestamp when loaded by BigQuery later on.
 
-   schema \= pa.schema(\[  
-       ('vendor\_id', pa.int64()),  
-       ('lpep\_pickup\_datetime', pa.timestamp('ns')),  
-       ('lpep\_dropoff\_datetime', pa.timestamp('ns')),  
-       ('store\_and\_fwd\_flag', pa.string()),  
-       ('ratecode\_id', pa.int64()),  
-       ('pu\_location\_id', pa.int64()),  
-       ('do\_location\_id', pa.int64()),  
-       ('passenger\_count', pa.int64()),  
-       ('trip\_distance', pa.float64()),  
-       ('fare\_amount', pa.float64()),  
+   schema \= pa.schema([  
+       ('vendor_id', pa.int64()),  
+       ('lpep_pickup_datetime', pa.timestamp('ns')),  
+       ('lpep_dropoff_datetime', pa.timestamp('ns')),  
+       ('store_and_fwd_flag', pa.string()),  
+       ('ratecode_id', pa.int64()),  
+       ('pu_location_id', pa.int64()),  
+       ('do_location_id', pa.int64()),  
+       ('passenger_count', pa.int64()),  
+       ('trip_distance', pa.float64()),  
+       ('fare_amount', pa.float64()),  
        ('extra', pa.float64()),  
-       ('mta\_tax', pa.float64()),  
-       ('tip\_amount', pa.float64()),  
-       ('tolls\_amount', pa.float64()),  
-       ('improvement\_surcharge', pa.float64()),  
-       ('total\_amount', pa.float64()),  
-       ('payment\_type', pa.int64()),  
-       ('trip\_type', pa.int64()),  
-       ('congestion\_surcharge', pa.float64()),  
-       ('lpep\_pickup\_month', pa.int64())  
-   \])  
+       ('mta_tax', pa.float64()),  
+       ('tip_amount', pa.float64()),  
+       ('tolls_amount', pa.float64()),  
+       ('improvement_surcharge', pa.float64()),  
+       ('total_amount', pa.float64()),  
+       ('payment_type', pa.int64()),  
+       ('trip_type', pa.int64()),  
+       ('congestion_surcharge', pa.float64()),  
+       ('lpep_pickup_month', pa.int64())  
+   ])  
     
-   table \= pa.Table.from\_pandas(data, schema=schema)
+   table \= pa.Table.from_pandas(data, schema=schema)
 
 ## GCP BQ \- Create External Table using Python
 
@@ -225,32 +227,32 @@ If you’re using Mage, in the last Data Exporter that writes to Google Cloud St
 
 from google.cloud import bigquery
 
-    \# Set table\_id to the ID of the table to create  
-    table\_id \= f"{project\_id}.{dataset\_name}.{table\_name}"
+    \# Set table_id to the ID of the table to create  
+    table_id \= f"{project_id}.{dataset_name}.{table_name}"
 
     \# Construct a BigQuery client object  
     client \= bigquery.Client()
 
     \# Set the external source format of your table  
-    external\_source\_format \= "PARQUET"
+    external_source_format \= "PARQUET"
 
-    \# Set the source\_uris to point to your data in Google Cloud  
-    source\_uris \= \[ f'gs://{bucket\_name}/{object\_key}/\*'\]
+    \# Set the source_uris to point to your data in Google Cloud  
+    source_uris \= [ f'gs://{bucket_name}/{object_key}/'\]
 
     \# Create ExternalConfig object with external source format  
-    external\_config \= bigquery.ExternalConfig(external\_source\_format)  
-    \# Set source\_uris that point to your data in Google Cloud  
-    external\_config.source\_uris \= source\_uris  
-    external\_config.autodetect \= True  
+    external_config \= bigquery.ExternalConfig(external_source_format)  
+    \# Set source_uris that point to your data in Google Cloud  
+    external_config.source_uris \= source_uris  
+    external_config.autodetect \= True  
       
-    table \= bigquery.Table(table\_id)  
+    table \= bigquery.Table(table_id)  
     \# Set the external data configuration of the table  
-    table.external\_data\_configuration \= external\_config
+    table.external_data_configuration \= external_config
 
-    table \= client.create\_table(table)  \# Make an API request.
+    table \= client.create_table(table)  \# Make an API request.
 
-    print(f'Created table with external source: {table\_id}')  
-    print(f'Format: {table.external\_data\_configuration.source\_format}')
+    print(f'Created table with external source: {table_id}')  
+    print(f'Format: {table.external_data_configuration.source_format}')
 
 ## GCP BQ \- Check BigQuery Table Exist And Delete
 
@@ -260,7 +262,7 @@ from google.cloud import bigquery
 
 **Solution:**
 
-Combine with “Create External Table using Python”, use it before “client.create\_table” function.
+Combine with "Create External Table using Python", use it before "client.create_table" function.
 
 def tableExists(tableID, client):  
     """  
@@ -268,7 +270,7 @@ def tableExists(tableID, client):
     return : (Boolean)  
     """  
     try:  
-        table \= client.get\_table(tableID)  
+        table \= client.get_table(tableID)  
         return True  
     except Exception as e: \# NotFound:  
         return False
@@ -285,7 +287,7 @@ Solution: This problem arises if your gcs and bigquery storage is in different r
 
 One potential way to solve it: 
 
-1. Go to your google cloud bucket and check the region in field named “Location”
+1. Go to your google cloud bucket and check the region in field named "Location"
 
    ![][image32]
 
@@ -308,39 +310,39 @@ import requests
 import logging  
 from google.cloud import bigquery
 
-def hello\_world(request):
+def hello_world(request):
 
-    \# table\_id \= \<project\_id.dataset\_id.table\_id\>  
-    table\_id \= 'de-zoomcap-project.dezoomcamp.fhv-2019'
+    \# table_id \= <project_id.dataset_id.table_id\>  
+    table_id \= 'de-zoomcap-project.dezoomcamp.fhv-2019'
 
     \# Create a new BigQuery client  
     client \= bigquery.Client()
 
     for month in range(4, 13):  
         \# Define the schema for the data in the CSV.gz files  
-        url \= 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhv/fhv\_tripdata\_2019-{:02d}.csv.gz'.format(month)
+        url \= 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhv/fhv_tripdata_2019-{:02d}.csv.gz'.format(month)
 
         \# Download the CSV.gz file from Github  
         response \= requests.get(url)
 
         \# Create new table if loading first month data else append  
-        write\_disposition\_string \= "WRITE\_APPEND" if month \> 1 else "WRITE\_TRUNCATE"
+        write_disposition_string \= "WRITE_APPEND" if month > 1 else "WRITE_TRUNCATE"
 
         \# Defining LoadJobConfig with schema of table to prevent it from changing with every table  
-        job\_config \= bigquery.LoadJobConfig(  
-                schema=\[  
-                    bigquery.SchemaField("dispatching\_base\_num", "STRING"),  
-                    bigquery.SchemaField("pickup\_datetime", "TIMESTAMP"),  
-                    bigquery.SchemaField("dropOff\_datetime", "TIMESTAMP"),  
+        job_config \= bigquery.LoadJobConfig(  
+                schema=[  
+                    bigquery.SchemaField("dispatching_base_num", "STRING"),  
+                    bigquery.SchemaField("pickup_datetime", "TIMESTAMP"),  
+                    bigquery.SchemaField("dropOff_datetime", "TIMESTAMP"),  
                     bigquery.SchemaField("PUlocationID", "STRING"),  
                     bigquery.SchemaField("DOlocationID", "STRING"),  
-                    bigquery.SchemaField("SR\_Flag", "STRING"),  
-                    bigquery.SchemaField("Affiliated\_base\_number", "STRING"),  
-                \],  
-                    skip\_leading\_rows=1,  
-                    write\_disposition=write\_disposition\_string,  
+                    bigquery.SchemaField("SR_Flag", "STRING"),  
+                    bigquery.SchemaField("Affiliated_base_number", "STRING"),  
+                ],  
+                    skip_leading_rows=1,  
+                    write_disposition=write_disposition_string,  
                     autodetect=True,  
-                    source\_format="CSV",  
+                    source_format="CSV",  
                 )
 
         \# Load the data into BigQuery   
@@ -348,17 +350,17 @@ def hello\_world(request):
         with tempfile.NamedTemporaryFile() as f:  
             f.write(response.content)  
             f.seek(0)  
-            job \= client.load\_table\_from\_file(  
+            job \= client.load_table_from_file(  
                 f,  
-                table\_id,  
+                table_id,  
                 location="US",  
-                job\_config=job\_config,  
+                job_config=job_config,  
             )  
             job.result()  
-            logging.info("Data for month %d successfully loaded into table %s.", month, table\_id)  
-    return 'Data loaded into table {}.'.format(table\_id)
+            logging.info("Data for month %d successfully loaded into table %s.", month, table_id)  
+    return 'Data loaded into table {}.'.format(table_id)
 
-## GCP BQ \- When querying two different tables external and materialized you get the same result when count(distinct(\*))
+## GCP BQ \- When querying two different tables external and materialized you get the same result when count(distinct(*))
 
 You need to uncheck cache preferences in query settings
 
@@ -370,7 +372,7 @@ You need to uncheck cache preferences in query settings
 
 Problem: When you inject data into GCS using Pandas, there is a chance that some dataset has missing values on  DOlocationID and PUlocationID. Pandas by default will cast these columns as float data type, causing inconsistent data type between parquet in GCS and schema defined in big query. You will see something like this: 
 
-# *error: Error while reading table: trips\_data\_all.external\_fhv\_tripdata, error message: Parquet column 'DOlocationID' has type INT64 which does not match the target cpp\_type DOUBLE.* 
+# *error: Error while reading table: trips_data_all.external_fhv_tripdata, error message: Parquet column 'DOlocationID' has type INT64 which does not match the target cpp_type DOUBLE.* 
 
 Solution: 
 
@@ -380,9 +382,9 @@ Solution:
 
 Something like:
 
-    df\["PUlocationID"\] \= df.PUlocationID.astype("Int64")
+    df["PUlocationID"] \= df.PUlocationID.astype("Int64")
 
-    df\["DOlocationID"\] \= df.DOlocationID.astype("Int64")
+    df["DOlocationID"] \= df.DOlocationID.astype("Int64")
 
 NOTE: It is best to define the data type of all the columns in the Transformation section of the ETL pipeline before loading to BigQuery
 
@@ -407,16 +409,16 @@ No. Based on the documentation for Bigquery, it does not support more than 1 col
 
 Convert the column to datetime first.
 
-df\["pickup\_datetime"\] \= pd.to\_datetime(df\["pickup\_datetime"\])  
-df\["dropOff\_datetime"\] \= pd.to\_datetime(df\["dropOff\_datetime"\])
+df["pickup_datetime"] \= pd.to_datetime(df["pickup_datetime"])  
+df["dropOff_datetime"] \= pd.to_datetime(df["dropOff_datetime"])
 
-## GCP BQ \- When trying to cluster by DATE(tpep\_pickup\_datetime) it gives an error: Entries in the CLUSTER BY clause must be column names
+## GCP BQ \- When trying to cluster by DATE(tpep_pickup_datetime) it gives an error: Entries in the CLUSTER BY clause must be column names
 
 No need to convert as you can cluster by a TIMESTAMP column directly in BigQuery. BigQuery supports clustering on TIMESTAMP, DATE, DATETIME, STRING, INT64, and BOOL types.
 
-clustering sorts data based on the timestamp to optimize queries with filters like WHERE tpep\_pickup\_datetime BETWEEN ..., rather than creating discrete partitions.
+clustering sorts data based on the timestamp to optimize queries with filters like WHERE tpep_pickup_datetime BETWEEN ..., rather than creating discrete partitions.
 
-If your goal is to improve performance for time-based queries, combining partitioning by DATE(event\_time) and clustering by tpep\_pickup\_datetime is a good approach.
+If your goal is to improve performance for time-based queries, combining partitioning by DATE(event_time) and clustering by tpep_pickup_datetime is a good approach.
 
 ## GCP BQ \- Native tables vs External tables in BigQuery?
 
@@ -436,7 +438,7 @@ Resources:
 
 If your partitioned table in BigQuery shows as non-partitioned, it may be due to a delay in updating the table's details in the UI. The table is likely partitioned, but it may not show the updated information immediately.
 
-Here’s what you can do:
+Here's what you can do:
 
 1. Refresh your BigQuery UI:  
    If you're already inspecting the table in the BigQuery UI, try refreshing the page after a few minutes to ensure the table details are updated correctly.
@@ -451,35 +453,32 @@ Here’s what you can do:
 
 Issue: Tried running command to export ML model from BQ to GCS from Week 3
 
-bq \--project\_id taxi-rides-ny extract \-m nytaxi.tip\_model gs://taxi\_ml\_model/tip\_model
+bq --project_id taxi-rides-ny extract -m nytaxi.tip_model gs://taxi_ml_model/tip_model
 
 It is failing on following error:
 
 BigQuery error in extract operation: Error processing job Not found: Dataset was not found in location US
 
-I verified the BQ data set and gcs bucket are in the same region- us-west1. Not sure how it gets location US. I couldn’t find the solution yet.
+I verified the BQ data set and gcs bucket are in the same region- us-west1. Not sure how it gets location US. I couldn't find the solution yet.
 
-Solution:  Please enter correct project\_id and gcs\_bucket folder address. My gcs\_bucket folder address is 
+Solution:  Please enter correct project_id and gcs_bucket folder address. My gcs_bucket folder address is 
 
-gs://dtc\_data\_lake\_optimum-airfoil-376815/tip\_model 
+gs://dtc_data_lake_optimum-airfoil-376815/tip_model 
 
-## Dim\_zones.sql Dataset was not found in location US When Running fact\_trips.sql
+## Dim_zones.sql Dataset was not found in location US When Running fact_trips.sql
 
-To solve this error mention the location \= US when creating the dim\_zones table 
+To solve this error mention the location = US when creating the dim_zones table 
 
+{% raw %}
 {{ config(
-
     materialized='table',
-
     location='US'
-
 ) }}
-
-Just Update this part to solve the issue and run the dim\_zones again and then run the fact\_trips
+{% endraw %}
 
 ## GCP BQ ML \- Export ML model to make predictions does not work for MacBook with Apple M1 chip (arm architecture).
 
-Solution: proceed with setting up serving\_dir on your computer as in the extract\_model.md file. Then instead of 
+Solution: proceed with setting up serving_dir on your computer as in the extract_model.md file. Then instead of 
 
 docker pull tensorflow/serving
 
@@ -489,19 +488,19 @@ docker pull emacski/tensorflow-serving
 
 Then
 
-docker run \-p 8500:8500 \-p 8501:8501 \--mount type=bind,source=\`pwd\`/serving\_dir/tip\_model,target=/models/tip\_model \-e MODEL\_NAME=tip\_model \-t emacski/tensorflow-serving
+docker run -p 8500:8500 -p 8501:8501 --mount type=bind,source=`pwd`/serving_dir/tip_model,target=/models/tip_model -e MODEL_NAME=tip_model -t emacski/tensorflow-serving
 
 Then run the curl command as written, and you should get a prediction.
 
 Or new since Oct 2024:
 
-Beta release of Docker VMM \- the more performant alternative to Apple Virtualization Framework on macOS (requires Apple Silicon and macOS 12.5 or later). [https://docs.docker.com/desktop/features/vmm/](https://docs.docker.com/desktop/features/vmm/)
+Beta release of Docker VMM - the more performant alternative to Apple Virtualization Framework on macOS (requires Apple Silicon and macOS 12.5 or later). [https://docs.docker.com/desktop/features/vmm/](https://docs.docker.com/desktop/features/vmm/)
 
 ![][image37]
 
 ## VMs \- What do I do if my VM runs out of space?
 
-- Try deleting data you’ve saved to your VM locally during ETLs
+- Try deleting data you've saved to your VM locally during ETLs
 
 - Kill processes related to deleted files
 
@@ -517,27 +516,27 @@ Beta release of Docker VMM \- the more performant alternative to Apple Virtualiz
 
 Example of creating external table:
 
- CREATE OR REPLACE EXTERNAL TABLE \`your\_project.your\_dataset.tablenamel\`
+ CREATE OR REPLACE EXTERNAL TABLE \`your_project.your_dataset.tablenamel\`
 
 OPTIONS (
 
   format \= 'PARQUET',
 
-  uris \= \['gs://your-bucket-name/yellow\_tripdata\_2024-\*.parquet'\]
+  uris \= \['gs://your-bucket-name/yellow_tripdata_2024-\*.parquet'\]
 
 );
 
 Example of creating regular table from extermal table
 
-CREATE OR REPLACE TABLE \`your\_project.your\_dataset.tablename\`
+CREATE OR REPLACE TABLE \`your_project.your_dataset.tablename\`
 
 AS
 
-SELECT \* FROM \`your\_project.your\_dataset.yellow\_taxi\_external\`;
+SELECT \* FROM \`your_project.your_dataset.yellow_taxi_external\`;
 
 Or directly load data form GCS into a regular BigQuery table without creating an external table using:
 
-CREATE OR REPLACE TABLE \`your\_project.your\_dataset.yellow\_taxi\_table\`
+CREATE OR REPLACE TABLE \`your_project.your_dataset.yellow_taxi_table\`
 
 OPTIONS (
 
@@ -545,13 +544,13 @@ OPTIONS (
 
 ) AS
 
-SELECT \* FROM \`your\_project.your\_dataset.external\_table\_placeholder\`
+SELECT \* FROM \`your_project.your_dataset.external_table_placeholder\`
 
-FROM EXTERNAL\_QUERY(
+FROM EXTERNAL_QUERY(
 
-  'your\_project.region-us.gcs\_external',
+  'your_project.region-us.gcs_external',
 
-  'SELECT \* FROM \`gs://your-bucket-name/yellow\_tripdata\_2024-\*.parquet\`'
+  'SELECT \* FROM \`gs://your-bucket-name/yellow_tripdata_2024-\*.parquet\`'
 
 );
 
@@ -559,69 +558,69 @@ FROM EXTERNAL\_QUERY(
 
 Yes, you can load your Parquet files directly into your GCP (Google Cloud Platform) Bucket first, then via BigQuery, you can create an external table of these Parquet files with a query statement like this:
 
-CREATE OR REPLACE EXTERNAL TABLE \`module-3-data-warehouse.taxi\_data.external\_yellow\_tripdata\_2024\`  
+CREATE OR REPLACE EXTERNAL TABLE \`module-3-data-warehouse.taxi_data.external_yellow_tripdata_2024\`  
 OPTIONS (  
   format \= 'PARQUET',  
-  uris \= \['gs://module3-dez/yellow\_tripdata\_2024-\*.parquet'\]  
+  uris \= \['gs://module3-dez/yellow_tripdata_2024-\*.parquet'\]  
 );
 
 Make sure to adjust the sql statement to your own situation and directories.  
 The \* symbol can be used as a wildcard, which you will need to target Parquet files of all the months of 2024\.
 
-## Homework \- What does it mean “Stop with loading the files into a bucket.' Stop with loading the files into a bucket?”
+## Homework \- What does it mean "Stop with loading the files into a bucket.' Stop with loading the files into a bucket?
 
 Ans: What they mean is that they don't want you to do anything more than that. You should load the files into the bucket and create an external table based on those files (but nothing like cleaning the data and putting it in parquet format)
 
 ## Homework \- Reading parquets from nyc.gov directly into pandas returns Out of bounds error
 
-If for whatever reason you try to read parquets directly from nyc.gov’s cloudfront into pandas, you might run into this error:
+If for whatever reason you try to read parquets directly from nyc.gov's cloudfront into pandas, you might run into this error:
 
-pyarrow.lib.ArrowInvalid: Casting from timestamp\[us\] to timestamp\[ns\] would result in out of bounds
+pyarrow.lib.ArrowInvalid: Casting from timestamp[us] to timestamp[ns] would result in out of bounds
 
 Cause:
 
-1. there is one errant data record where the dropOff\_datetime was set to year 3019 instead of 2019\. 
+1. there is one errant data record where the dropOff_datetime was set to year 3019 instead of 2019\. 
 
-2. pandas uses “timestamp\[ns\]” (as noted above), and int64 only allows a \~580 year range, centered on 2000\. See \`pd.Timestamp.max\` and \`pd.Timestamp.min\`
+2. pandas uses "timestamp[ns]" (as noted above), and int64 only allows a ~580 year range, centered on 2000\. See \`pd.Timestamp.max\` and \`pd.Timestamp.min\`
 
 3. This becomes out of bounds when pandas tries to read it because 3019 \> 2300 (approx value of pd.Timestamp.Max
 
 Fix:
 
 1. Use pyarrow to read it:  
-   import pyarrow.parquet as pq df \= pq.read\_table('fhv\_tripdata\_2019-02.parquet').to\_pandas(safe=False)  
+   import pyarrow.parquet as pq df \= pq.read_table('fhv_tripdata_2019-02.parquet').to_pandas(safe=False)  
    However this results in weird timestamps for the offending record
 
-2. Read the datetime columns separately using pq.read\_table
+2. Read the datetime columns separately using pq.read_table
 
-   table \= pq.read\_table(‘taxi.parquet’)  
-   datetimes \= \[‘list of datetime column names’\]  
-   df\_dts \= pd.DataFrame()  
+   table \= pq.read_table('taxi.parquet')  
+   datetimes \= ['list of datetime column names']  
+   df_dts \= pd.DataFrame()  
        for col in datetimes:  
-           df\_dts\[col\] \= pd.to\_datetime(table .column(col), errors='coerce')
+           df_dts[col] \= pd.to_datetime(table .column(col), errors='coerce')
 
-   The \`errors=’coerce’\` parameter will convert the out of bounds timestamps into either the max or the min
+   The \`errors='coerce'\` parameter will convert the out of bounds timestamps into either the max or the min
 
 3. Use parquet.compute.filter to remove the offending rows
 
    import pyarrow.compute as pc  
-   table \= pq.read\_table("‘taxi.parquet")  
+   table \= pq.read_table("'taxi.parquet")  
    df \= table.filter(  
-       pc.less\_equal(table\["dropOff\_datetime"\], pa.scalar(pd.Timestamp.max))  
-   ).to\_pandas()
+       pc.less_equal(table["dropOff_datetime"], pa.scalar(pd.Timestamp.max))  
+   ).to_pandas()
 
 ## Homework \- Uploading files to GCS via GUI
 
 This can help avoid schema issues in the homework.   
-Download files locally and use the ‘upload files’ button in GCS at the desired path. You can upload many files at once. You can also choose to upload a folder.
+Download files locally and use the 'upload files' button in GCS at the desired path. You can upload many files at once. You can also choose to upload a folder.
 
-## Homework \- Qn 5: The partitioned/clustered table isn’t giving me the prediction I expected
+## Homework \- Qn 5: The partitioned/clustered table isn't giving me the prediction I expected
 
 Ans: Take a careful look at the format of the dates in the question.
 
 ## Homework \- Qn 6: Did anyone get an exact match for one of the options given in Module 3 homework Q6?
 
-Many people aren’t getting an exact match, but are very close to one of the options. As per **Alexey said to choose the closest option**.
+Many people aren't getting an exact match, but are very close to one of the options. As per **Alexey said to choose the closest option**.
 
 ## Python \- invalid start byte Error Message
 
@@ -631,13 +630,13 @@ Solution:
 
 Step 1: When reading the data from the web into the pandas dataframe mention the encoding as follows:
 
-pd.read\_csv(dataset\_url, low\_memory=False, encoding='latin1') 
+pd.read_csv(dataset_url, low_memory=False, encoding='latin1') 
 
 Step 2: When writing the dataframe from the local system to GCS as a csv mention the encoding as follows:
 
-df.to\_csv(path\_on\_gsc, compression="gzip", encoding='utf-8')
+df.to_csv(path_on_gsc, compression="gzip", encoding='utf-8')
 
-Alternative: use pd.read\_parquet(url)
+Alternative: use pd.read_parquet(url)
 
 ## Python \- Generators in python
 
@@ -647,7 +646,7 @@ A generator is a special type of iterable, similar to a list or a tuple, but wit
 
 ## Python \- Easiest way to read multiple files at the same time?
 
-The read\_parquet function supports a list of files as an argument. The list of files will be merged into a single result table.
+The read_parquet function supports a list of files as an argument. The list of files will be merged into a single result table.
 
 ## Python \- These won't work. You need to make sure you use Int64: 
 
@@ -661,13 +660,13 @@ The read\_parquet function supports a list of files as an argument. The list of 
 
 `df['DOlocationID'] = df['DOlocationID'].astype('Int64')`
 
-## Warning when run load\_yellow\_data python script 
+## Warning when run load_yellow_data python script 
 
-RuntimeWarning: As the c extension couldn't be imported, google-crc32c is using a pure python implementation that is significantly slower. If possible, please configure a c build environment and compile extention warnings.warn(\_SLOW\_CRC32C\_WARNING, RuntimeWarning)
+RuntimeWarning: As the c extension couldn't be imported, google-crc32c is using a pure python implementation that is significantly slower. If possible, please configure a c build environment and compile extention warnings.warn(_SLOW_CRC32C_WARNING, RuntimeWarning)
 
-Failed to upload ./yellow\_tripdata\_2024-01.parquet to GCS: Timeout of 120.0s exceeded, last exception: ('Connection aborted.', timeout('The write operation timed out'))
+Failed to upload ./yellow_tripdata_2024-01.parquet to GCS: Timeout of 120.0s exceeded, last exception: ('Connection aborted.', timeout('The write operation timed out'))
 
-Failed to upload ./yellow\_tripdata\_2024-03.parquet to GCS: Timeout of 120.0s exceeded, last exception: ('Connection aborted.', timeout('The write operation timed out'))
+Failed to upload ./yellow_tripdata_2024-03.parquet to GCS: Timeout of 120.0s exceeded, last exception: ('Connection aborted.', timeout('The write operation timed out'))
 
 Im facing two separate issues in my script:
 
@@ -677,10 +676,10 @@ Im facing two separate issues in my script:
 
 ✅ Solution: Install the C-optimized google-crc32c
 
-pip install \--upgrade google-crc32c
+pip install --upgrade google-crc32c
 
 2\. Fix Google Cloud Storage Upload Timeout
 
 ✅ Solution 1: Increase Timeout
 
-blob.upload\_from\_filename(file\_path, timeout=300) \# Set timeout to 5 minutes
+blob.upload_from_filename(file_path, timeout=300) \# Set timeout to 5 minutes

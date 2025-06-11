@@ -198,14 +198,14 @@ Running out of storage while trying to backfill. I realized my GCP VM only has 3
 
 3. (\~3gb) Anaconda also takes up lots of space. You can’t delete it all if you want to run python, but you can clean it up significantly. I don’t care much about libs, etc. because I can build them in a docker container\! Command is $ conda clean \--all \-y  
 4. You can clean up your kestra files with a purge flow. Here is the generic one: [https://kestra.io/docs/administrator-guide/purge](https://kestra.io/docs/administrator-guide/purge)  
-   1. I personally wanted to do it immediately, not at end of month, so I made end date just now and got rid of the trigger block. You can also specify if you want to removed FAILED state executions, but I chose not to: `endDate: "{{ now() }}"`   
+   1. I personally wanted to do it immediately, not at end of month, so I made end date just now and got rid of the trigger block. You can also specify if you want to removed FAILED state executions, but I chose not to: `endDate: "{% raw %}{{ now() }}{% endraw %}"`   
 5. You can clean up your pg database by manually deleting tables in pgadmin. Or possibly set up a workflow for it in kestra, but it was easy enough to manually delete. 
 
 ## How can Kestra access service account credential?
 
 Do not directly add the content of service account credential json in Kestra script, especially if we are pushing to Github. Follow the instruction to add the service account as a secret [Configure Google Service Account](https://kestra.io/docs/how-to-guides/google-credentials#add-service-account-as-a-secret).
 
-When we need to use it in Kestra, we can pull it through `{{ secret('GCP_SERVICE_ACCOUNT') }}`
+When we need to use it in Kestra, we can pull it through `{% raw %}{{ secret('GCP_SERVICE_ACCOUNT') }}{% endraw %}`
 
 In the pluginDefaults.
 
@@ -262,12 +262,12 @@ Update your docker-compose.yml file as follows:
 This ensures all GCP tasks use the secret automatically:
 
 
-| pluginDefaults:  \- type: io.kestra.plugin.gcp    values:      serviceAccount: "{{ secret('GCP\_SERVICE\_ACCOUNT') }}" |
+| pluginDefaults:  \- type: io.kestra.plugin.gcp    values:      serviceAccount: "{% raw %}{{ secret('GCP\_SERVICE\_ACCOUNT') }}{% endraw %}" |
 | :---- |
 
 #### **Step 3: Verify it’s working in a testing GCP workflow** 
 
-| namespace: testing-credentialstasks:  \- id: create\_gcs\_bucket    type: io.kestra.plugin.gcp.gcs.CreateBucket    ifExists: SKIP    storage class: REGIONAL    name: “testing-cred-bucket” \# "{{ kv('GCP\_BUCKET\_NAME') }}" |
+| namespace: testing-credentialstasks:  \- id: create\_gcs\_bucket    type: io.kestra.plugin.gcp.gcs.CreateBucket    ifExists: SKIP    storage class: REGIONAL    name: “testing-cred-bucket” \# "{% raw %}{{ kv('GCP\_BUCKET\_NAME') }}{% endraw %}" |
 | :---- |
 
 ### **Additional \- QA**
