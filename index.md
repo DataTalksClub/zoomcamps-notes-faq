@@ -17,85 +17,92 @@ A comprehensive collection of notes, FAQ, and resources for the DataTalks.Club Z
 
 ---
 
+## DataTalks.Club Free Courses
+
+| Course | Description | Article | Repository |
+|:---|:---|:---|:---:|
+| [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) | Complete data engineering bootcamp covering Docker, SQL, Terraform, GCP, Kafka, and Spark | [Article](https://datatalks.club/blog/data-engineering-zoomcamp.html) | [![GitHub](https://img.shields.io/github/stars/DataTalksClub/data-engineering-zoomcamp?style=social)](https://github.com/DataTalksClub/data-engineering-zoomcamp) |
+| [Machine Learning Zoomcamp](https://github.com/DataTalksClub/machine-learning-zoomcamp) | ML engineering with deployment focus covering regression, classification, deep learning, and practical projects | [Article](https://datatalks.club/blog/machine-learning-zoomcamp.html) | [![GitHub](https://img.shields.io/github/stars/DataTalksClub/machine-learning-zoomcamp?style=social)](https://github.com/DataTalksClub/machine-learning-zoomcamp) |
+| [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) | Production ML systems & best practices including experiment tracking, model deployment, and monitoring | [Article](https://datatalks.club/blog/mlops-zoomcamp.html) | [![GitHub](https://img.shields.io/github/stars/DataTalksClub/mlops-zoomcamp?style=social)](https://github.com/DataTalksClub/mlops-zoomcamp) |
+| [Stock Markets Analytics Zoomcamp](https://github.com/DataTalksClub/stock-markets-analytics-zoomcamp) |  Financial data analysis and algorithmic trading strategies using Python and modern analytics tools | [Article](https://pythoninvest.com/course) | [![GitHub](https://img.shields.io/github/stars/DataTalksClub/stock-markets-analytics-zoomcamp?style=social)](https://github.com/DataTalksClub/stock-markets-analytics-zoomcamp) |
+| [LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp) |  Large Language Models course covering fine-tuning, RAG systems, and LLM application development | Coming Soon | [![GitHub](https://img.shields.io/github/stars/DataTalksClub/llm-zoomcamp?style=social)](https://github.com/DataTalksClub/llm-zoomcamp) |
+| [Open Source LLM Zoomcamp](https://github.com/DataTalksClub/open-source-llm-zoomcamp) | Hands-on course focused on open-source LLM tools, local deployment, and cost-effective AI solutions | Coming Soon | [![GitHub](https://img.shields.io/github/stars/DataTalksClub/open-source-llm-zoomcamp?style=social)](https://github.com/DataTalksClub/open-source-llm-zoomcamp) |
+| [AI Dev Tools Zoomcamp](https://github.com/DataTalksClub/ai-dev-tools-zoomcamp) | Modern AI development tools and workflows for building, testing, and deploying AI applications | Coming Soon | [![GitHub](https://img.shields.io/github/stars/DataTalksClub/ai-dev-tools-zoomcamp?style=social)](https://github.com/DataTalksClub/ai-dev-tools-zoomcamp) |
+
+## What's in This Repository
+
+- **Course Notes**: Detailed notes from each course session
+- **FAQ**: Frequently asked questions and answers
+- **Resources**: Links to datasets, tools, and materials
+- **Tips & Tricks**: Best practices and helpful hints
+- **Examples**: Sample projects and implementations
+
+## Contributing
+
+We welcome contributions from the community! You can help by:
+
+- **Reporting Issues**: Found an error or broken link? Let us know
+- **Improving Content**: Submit pull requests with corrections or enhancements
+- **Adding Notes**: Share your own course notes and insights
+- **Answering Questions**: Help fellow learners in discussions
+
+### How to Contribute
+1. Fork this repository
+2. Create a new branch for your changes
+3. Make your improvements
+4. Submit a pull request with a clear description
+
+---
+
 ## About DataTalks.Club
 
-**Join 73,000+ data enthusiasts from around the world!**
+**Join 73,000+ data enthusiasts from around the world**
 
-DataTalks.Club is a vibrant, inclusive community that brings together data professionals of all levels - from curious beginners to seasoned experts. We're on a mission to make data knowledge accessible to everyone, everywhere through free education and collaborative learning.
+DataTalks.Club is a global online community that brings together data professionals of all levels - from beginners to experienced practitioners. Our mission is to make data knowledge accessible through free education and collaborative learning.
 
-### 🎯 What We Do
+### What We Do
 
 - **Free Online Courses (Zoomcamps)** - Comprehensive bootcamps covering essential data skills
 - **Live Events** - Podcasts, webinars, and hands-on workshops
 - **Community Activities** - Book clubs, project collaborations, and networking
-- **Knowledge Sharing** - Articles, tutorials, and real-world insights
+- **Knowledge Sharing** - Articles, tutorials, and practical insights
 
-### 🏆 What Makes Us Special
+### What Makes Us Different
 
-- **🆓 Free Education**: All courses and events at no cost
-- **🤝 Supportive Community**: Learn alongside peers who share your passion  
-- **🌍 Global Reach**: Connect with data professionals worldwide
-- **📈 Career Growth**: Practical skills and networking opportunities
-- **🚀 Always Evolving**: Fresh content and cutting-edge topics
+- **Free Education**: All courses and events at no cost
+- **Supportive Community**: Learn alongside peers who share your interests
+- **Global Reach**: Connect with data professionals worldwide
+- **Career Growth**: Practical skills and networking opportunities
+- **Current Content**: Fresh material covering the latest industry trends
 
-## 📚 Our Free Courses
+## Community Activities
 
-### 🔧 [Data Engineering Zoomcamp](docs/data-engineering-zoomcamp/)
-Complete data engineering bootcamp covering Docker, SQL, Terraform, GCP, Kafka, and Spark. Build robust data pipelines and work with cloud platforms.
+### Live Events
+- **Podcasts**: Conversations with data professionals sharing real experiences
+- **Webinars**: Technical deep-dives with industry experts
+- **Workshops**: Hands-on coding sessions with practical datasets
 
-### 🤖 Machine Learning Zoomcamp *(Coming Soon)*
-ML engineering with deployment focus covering regression, classification, deep learning, and practical projects.
+### Book of the Week
+Authors join our Slack for live Q&A sessions. Ask questions and get insights directly from the authors.
 
-### 🚀 MLOps Zoomcamp *(Coming Soon)*
-Production ML systems & best practices including experiment tracking, model deployment, and monitoring.
+### Project of the Week
+Join study groups to work on real projects together, get peer support, and build your portfolio.
 
-### 📊 Stock Markets Analytics Zoomcamp *(Coming Soon)*
-Financial data analysis and algorithmic trading strategies using Python and modern analytics tools.
-
-### 🧠 LLM Zoomcamp *(Coming Soon)*
-Large Language Models course covering fine-tuning, RAG systems, and LLM application development.
-
-### 🔓 Open Source LLM Zoomcamp *(Coming Soon)*
-Hands-on course focused on open-source LLM tools, local deployment, and cost-effective AI solutions.
-
-### 🛠️ AI Dev Tools Zoomcamp *(Coming Soon)*
-Modern AI development tools and workflows for building, testing, and deploying AI applications.
-
-## 🎪 Community Activities
-
-### 🎙️ **Live Events**
-- **Podcasts**: Real stories from real data professionals
-- **Webinars**: Deep dive technical sessions with industry experts
-- **Workshops**: Hands-on coding sessions with real datasets
-
-### 📚 **Book of the Week**
-Authors join our Slack for live Q&A sessions. Ask thoughtful questions and win free copies!
-
-### 🚀 **Project of the Week**
-Join study groups to tackle real projects together, get peer support, and build your portfolio.
-
-## 📖 How to Use This Documentation
-
-- **📝 Notes**: Detailed explanations, code examples, and step-by-step guides
-- **❓ FAQ**: Common questions, troubleshooting, and solutions  
-- **🔍 Search**: Use the search feature to find specific topics
-- **🧭 Navigation**: Browse by course using the sidebar menu
-
-## 🤝 Community & Support
+## Community & Support
 
 ### Join Our Community
-- 💬 [Join our Slack](https://datatalks.club/slack.html) - Connect with 73,000+ data professionals
-- 📅 [Browse Events](http://lu.ma/dtc-events) - See upcoming live sessions
-- 📺 [YouTube Channel](https://www.youtube.com/@DataTalksClub) - Watch recorded sessions
-- 📧 [Newsletter](https://us19.campaign-archive.com/home/?u=0d7822ab98152f5afc118c176&id=97178021aa) - Weekly updates
+- [Join our Slack](https://datatalks.club/slack.html) - Connect with 73,000+ data professionals
+- [Browse Events](http://lu.ma/dtc-events) - See upcoming live sessions
+- [YouTube Channel](https://www.youtube.com/@DataTalksClub) - Watch recorded sessions
+- [Newsletter](https://us19.campaign-archive.com/home/?u=0d7822ab98152f5afc118c176&id=97178021aa) - Weekly updates
 
 ### Quick Links
-- [🌐 Main Website](https://datatalks.club/)
-- [📰 Articles](https://datatalks.club/articles.html)
-- [📚 Book Library](https://datatalks.club/books.html)
-- [📅 Community Calendar](https://calendar.google.com/calendar/?cid=ZjhxaWRqbnEwamhzY3A4ODA5azFlZ2hzNjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
+- [Main Website](https://datatalks.club/)
+- [Articles](https://datatalks.club/articles.html)
+- [Book Library](https://datatalks.club/books.html)
+- [Community Calendar](https://calendar.google.com/calendar/?cid=ZjhxaWRqbnEwamhzY3A4ODA5azFlZ2hzNjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
 
-## 💭 What Our Community Says
+## What Our Community Says
 
 > "It's a very active and engaging community for people of all levels. Love the content and the quality of the materials."
 
@@ -103,8 +110,13 @@ Join study groups to tackle real projects together, get peer support, and build 
 
 > "In my opinion, Alexey and the team have created one of the best learning resources out there."
 
+## Contact
+
+- **Alexey Grigorev**: [alexey@datatalks.club](mailto:alexey@datatalks.club) - Founder & Community Lead
+- **Valeriia Kuka**: [valeriia@datatalks.club](mailto:valeriia@datatalks.club) - Content Manager
+
 ---
 
-**Ready to start learning?** Check out our [course documentation](docs/) and join our [Slack community](https://datatalks.club/slack.html) to begin your journey! 🚀
+**Ready to start learning?** Check out our [course documentation](docs/) and join our [Slack community](https://datatalks.club/slack.html) to begin your journey.
 
-*All courses are free, hands-on, and designed by practitioners for practitioners.* 
+*All courses are free, hands-on, and designed by practitioners for real-world application.* 
