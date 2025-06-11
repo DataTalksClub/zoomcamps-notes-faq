@@ -1,10 +1,10 @@
 ---
 title: FAQ
-parent: Module 2
+parent: Final Project
 nav_order: 2
 ---
 
-# Module 2: Workflow Orchestration
+# Module 6 FAQ
 
 Coming soon
 {: .label .label-yellow }

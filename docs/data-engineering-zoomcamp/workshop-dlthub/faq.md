@@ -1,11 +1,10 @@
 ---
 title: FAQ
-parent: Module 2
+parent: Workshop dltHub
 nav_order: 2
 ---
 
-# Module 2: Workflow Orchestration
-
+# Data Ingestion with dlt FAQ
 Coming soon
 {: .label .label-yellow }
 
